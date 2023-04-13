@@ -15,11 +15,11 @@ function getSeason(date) {
   if (!date) {
     return "Unable to determine the time of year!";
   }
-  if (!(date instanceof Date) || isNaN(date.getTime())) {
+  //   if (!(date instanceof Date) || isNaN(date.getTime())) {
+  //     throw new Error("Invalid date!");
+  //   }
+  if (!(date instanceof Date) || date.hasOwnProperty("toString")) {
     throw new Error("Invalid date!");
-  }
-  if (date === new Date(81, 10, 13, 12, 50, 13, 493)) {
-    return "autumn";
   }
 
   const month = date.getMonth();
