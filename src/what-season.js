@@ -33,7 +33,7 @@ function getSeason(date) {
   if (month >= 5 && month < 8) {
     return "summer";
   }
-  if (month >= 8 && month < 10) {
+  if (month >= 8 && month <= 10) {
     return "autumn";
   }
 }
