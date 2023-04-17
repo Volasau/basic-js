@@ -24,34 +24,27 @@ function transform(arr) {
   const newArr = [];
 
   for (let i = 0; i < arr.length; i++) {
-    arr[i];
-    // console.log(arr[i]);
-    if (
-      arr[i] !== onenext &&
-      arr[i] !== oneprev &&
-      arr[i] !== bdnext &&
-      arr[i] !== bdprev
-    ) {
-      newArr.push(arr[i]);
-    }
-    if (arr[i] === bdnext) {
-      newArr.push(arr[i + 1]);
-    }
-    if (arr[i] === bdprev) {
-      newArr.push(arr[i - 1]);
-    }
     if (arr[i] === onenext) {
       i++;
-      newArr.push(arr[i - 1]);
-      newArr.pop();
-    }
-    if (arr[i] === oneprev) {
-      newArr.pop(arr[i - 1]);
+    } else if (arr[i] === oneprev) {
+      if (newArr.length > 0) {
+        newArr.pop();
+      }
+    } else if (arr[i] === bdnext) {
+      if (i < arr.length - 1) {
+        newArr.push(arr[i + 1]);
+      }
+    } else if (arr[i] === bdprev) {
+      if (i > 0 && arr[i - 2] !== onenext) {
+        newArr.push(arr[i - 1]);
+      }
+    } else {
+      newArr.push(arr[i]);
     }
   }
+
   return newArr;
 }
-
 module.exports = {
   transform,
 };
